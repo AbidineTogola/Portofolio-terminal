@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  <title>Doudou Togola | Terminal Portfolio</title>   
+</head>
+<body>
+  <div class="terminal" id="terminal">
+    <div class="output">
+      Welcome to Mamadou's Terminal!
+      Type <span style="color: limegreen">"help"</span> to get started.
+    </div>
+    <div class="input-line">
+      <span>MAT@terminal:~$</span><input type="text" id="commandInput" autofocus />
+    </div>
+  </div>
+  <script>
+    const input = document.getElementById('commandInput');
+    const terminal = document.getElementById('terminal');
+
+    function typeEffect(element, text, delay = 2) {
+      let i = 0;
+      function type() {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(type, delay);
+        }
+      }
+      type();
+    }
+
+    function showCommandOutput(text, isHTML = false) {
+      const line = document.createElement('div');
+      line.className = 'output';
+      if (isHTML) {
+        line.innerHTML = text;
+      } else {
+        typeEffect(line, text, 2);
+      }
+      terminal.insertBefore(line, document.querySelector('.input-line'));
+    }
+
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        const command = input.value.trim();
+        executeCommand(command);
+        input.value = '';
+      }
+    });
+
+    function executeCommand(cmd) {
+      const output = document.createElement('div');
+      output.className = 'output';
+      output.innerHTML = `> ${cmd}`;
+      terminal.insertBefore(output, document.querySelector('.input-line'));
+
+      switch (cmd.toLowerCase()) {
+        case 'help':
+          showCommandOutput(`
+<span class="cmd">help</span>      - <span class="desc">to show commands</span>\n<span class="cmd">about</span>      - <span class="desc">about me</span>\n<span class="cmd">cv</span>      - <span class="desc">My curriculum vitae</span>\n<span class="cmd">projects</span>      - <span class="desc">projects list</span>\n<span class="cmd">skills</span>      - <span class="desc">My Skills </span>\n<span class="cmd">contact</span>      - <span class="desc">To link with me</span>\n<span class="cmd">tools</span>      - <span class="desc">software I use</span>\n<span class="cmd">certifications</span>      - <span class="desc">my certifications</span>\n<span class="cmd">clear</span>      - <span class="desc">clear the terminal</span>
+`, true);
+          break;
+
+        case 'about':
+          showCommandOutput(`
+<span class="title">Mamadou TOGOLA</span>
+Cybersecurity Enthusiast | Future Full-Stack Developer
+
+Currently in training, I'm building strong skills in network security, system protection, and Cisco technologies.
+I aim to become a cybersecurity expert, designing secure and resilient systems to protect digital infrastructures. My long-term goal is to specialize in cybersecurity, I also aspire to grow as a full-stack developer to better understand the full spectrum of software development. By engaging in hands-on projects and internships, I seek to strengthen my technical foundation and gain practical experience across both fields.
+
+I'm curious, detail-oriented, and always eager to learn something new. This interactive portfolio simulates a Linux terminal to reflect my technical mindset.
+
+`, true);
+          break;
+
+        case 'cv':
+          showCommandOutput(`
+<span class="title">PROFESSIONAL OBJECTIVE</span>
+
+I aim to become a cybersecurity expert and build secure systems to protect digital infrastructure.
+To strengthen my technical skills, I’m actively searching training and internships that enhance both my development and security knowledge.
+
+<span class="title">Technical Skills</span>
+- Front-end: HTML5, CSS, JavaScript, React.js.
+- Back-end: react.js, Python, PHP, MySQL, Java.
+- Tools: Git, GitHub, VS Code, Packet Tracer, Wireshark.
+
+<span class="title">Professional Experience</span>
+- Design & création of graphic designs for the Association of Lieema in Algeria. 2023-2024
+- Frontend Internship at Elevvo Pathways. 2025
+
+<span class="title">Education</span>
+- Bachelor’s Degree in Computer Science at university Saad Dalhab 1  in Algeria (In Progress)
+- Scientific Baccalaureate Science Track (Mathematics & Biology) at Chadian-Turkish High Schhool in Chad (2021-2022)
+
+Click here to download to see full cv: <a href="cv.pdf" download target="_blank">cv.pdf</a>
+
+`, true);
+          break;
+
+        case 'contact':
+          showCommandOutput(`
+<span class="title">Contact Information:</span>
+
+- Email     : doudoutogola@yahoo.com
+- LinkedIn  : <a href="https://linkedin.com/in/mamadou-togola-a48621320" target="_blank">linkedin.com/in/mamadou-togola-a48621320</a>
+- GitHub    : <a href="https://github.com/AbidineTogola" target="_blank">github.com/AbidineTogola</a>
+- watsApp   : : <a href="https://wa.me/+22391064394" target="_blank">wa.me/+22391064394</a>
+- Phone     : +223 91064394 / +213 556624518
+
+Feel free to reach out for opportunities or collaborations!
+`, true);
+          break;
+
+        case 'skills':
+          showCommandOutput(`
+<span class="title">My Technical Skills</span>
+
+-Cybersecurity & Networking (CCNA)
+<ul>
+    <li>Network Fundamentals</li>
+    <li>Ethernet</li>
+    <li>IP Connectivity</li>
+    <li>IP Services</li>
+    <li>IP Subnetting</li>
+    <li>IPv4 and IPv6 Addressing</li>
+    <li>Switching</li>
+    <li>Security Fundamentals</li>
+</ul>
+
+-Programming Languages
+<ul>
+    <li>JavaScript</li>
+    <li>Python</li>
+    <li>Java</li>
+    <li>PHP</li>
+    <li>HTML & CSS</li>
+    <li>pascal</li>
+    <li>C</li>
+    <li>MySQL</li>
+</ul>
+- Project Management(Agile Methodology)
+<ul>
+    <li>Scrum</li>
+    <li>Kanban</li>
+    <li>Incremental product development</li>
+    <li>Iterative product development</li>
+</ul>
+
+- TEAMWORK & COLLABORATION
+<ul>
+    <li>Effective communication</li>
+    <li>Active listening</li>
+    <li>Empathy</li>
+    <li>Microsoft Excel</li>
+    <li>Microsoft Word</li>
+    <li>Microsoft PowerPoint</li>
+</ul>
+- Graphic Design
+<ul>
+    <li>Adobe Photoshop</li>
+    <li>Canva</li>
+</ul>
+
+`, true);
+          break;
+
+        case 'projects':
+          showCommandOutput(`
+<span class="title">Projects</span>
+
+- Interactive Terminal Portfolio (this project)
+  → Built with HTML, CSS, and JavaScript to showcase my profile in a Linux-style terminal interface.
+
+I am currently focusing on building solid skills through training and small practice tasks.  
+More projects will be added soon as I grow and gain experience.
+
+`, true);
+
+          break;
+
+        case 'tools':
+          showCommandOutput(`
+<span class="title">Tools I Use:</span>
+
+- Wireshark       : Network traffic analysis
+- Nmap            : Port & vulnerability scanning
+- Kali Linux      : Penetration testing OS
+- Cisco Packet Tracer : Network simulation
+- Git & GitHub    : Version control & collaboration
+- VS Code         : Code editing
+`, true);
+          break;
+
+        case 'certifications':
+          showCommandOutput(`
+<span class="title">My Certifications</span>
+
+- Cisco CCNA1v7: Introduction to Networks <a href="CCNA1.pdf" target="_blank">CCNA1.pdf</a>  <a href="CCNA1v7.pdf" target="_blank">CCNA1v7.pdf</a> 
+- project management (Agile Methodology) <a href="certificate Gestion de Projet Agile.pdf"  target="_blank">certificate Gestion de Projet Agile.pdf</a> 
+- Cybersecurity Awareness <a href="Certificat Cybersecurity Awareness.pdf"  target="_blank">Certificat Cybersecurity Awareness.pdf</a>
+-Introduction to IA <a href="Introduction to IA.pdf"  target="_blank">Introduction to IA.pdf</a> 
+
+
+`, true);
+
+case 'license':
+  showCommandOutput(`
+This project is licensed under the MIT License.
+You are free to use, copy, modify, and distribute it with attribution.
+Full text available in the LICENSE file on GitHub.
+`, true);
+
+          break;
+        
+
+        case 'clear':
+          const inputLine = document.querySelector('.input-line');
+          terminal.innerHTML = '';
+          terminal.appendChild(inputLine);
+          return;
+
+        default:
+          showCommandOutput('Command not found. Type "help" to see available commands.');
+      }
+    }
+  </script>
+</body>
+</html>

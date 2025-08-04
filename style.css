@@ -1,0 +1,47 @@
+ body {
+      background-color: black;
+      color: white;
+      font-family: monospace;
+      padding: 20px;
+    }
+    .terminal {
+      max-width: 800px;
+      margin: auto;
+    }
+    .output {
+      white-space: pre-wrap;
+      margin-bottom: 10px;
+    }
+    .input-line {
+      display: flex;
+    }
+    .input-line span {
+      color: limegreen;
+      margin-right: 5px;
+    }
+    .title {
+      color: limegreen;
+      font-weight: bold;
+    }
+    .cmd {
+      color: lime;
+      display: inline-block;
+      width: 10ch;
+    }
+    .desc {
+      color: white;
+    }
+    a {
+      color: dodgerblue;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    input {
+      background: black;
+      border: none;
+      color: white;
+      outline: none;
+      width: 100%;
+    }
